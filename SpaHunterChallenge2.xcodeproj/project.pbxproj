@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F41A0D2D5E00FF6A65 /* main.m */; };
 		4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */; };
-		4F91C0FB1A0D2D5E00FF6A65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0FA1A0D2D5E00FF6A65 /* ViewController.m */; };
+		4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */; };
 		4F91C0FE1A0D2D5E00FF6A65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C0FC1A0D2D5E00FF6A65 /* Main.storyboard */; };
 		4F91C1001A0D2D5E00FF6A65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C0FF1A0D2D5E00FF6A65 /* Images.xcassets */; };
 		4F91C1031A0D2D5E00FF6A65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C1011A0D2D5E00FF6A65 /* LaunchScreen.xib */; };
 		4F91C10F1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C10E1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m */; };
+		4F91C1191A0D2E2F00FF6A65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1181A0D2E2F00FF6A65 /* CoreLocation.framework */; };
+		4F91C11B1A0D2E7600FF6A65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C11A1A0D2E7600FF6A65 /* MapKit.framework */; };
+		4F91C11E1A0D2FCB00FF6A65 /* PizzaMapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +35,18 @@
 		4F91C0F41A0D2D5E00FF6A65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F91C0F61A0D2D5E00FF6A65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4F91C0F91A0D2D5E00FF6A65 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4F91C0FA1A0D2D5E00FF6A65 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4F91C0F91A0D2D5E00FF6A65 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F91C0FD1A0D2D5E00FF6A65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F91C0FF1A0D2D5E00FF6A65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F91C1021A0D2D5E00FF6A65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4F91C1081A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaHunterChallenge2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F91C10D1A0D2D5E00FF6A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F91C10E1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpaHunterChallenge2Tests.m; sourceTree = "<group>"; };
+		4F91C1181A0D2E2F00FF6A65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4F91C11A1A0D2E7600FF6A65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4F91C11C1A0D2FCB00FF6A65 /* PizzaMapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PizzaMapItem.h; sourceTree = "<group>"; };
+		4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PizzaMapItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F91C11B1A0D2E7600FF6A65 /* MapKit.framework in Frameworks */,
+				4F91C1191A0D2E2F00FF6A65 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,8 @@
 		4F91C0E61A0D2D5E00FF6A65 = {
 			isa = PBXGroup;
 			children = (
+				4F91C11A1A0D2E7600FF6A65 /* MapKit.framework */,
+				4F91C1181A0D2E2F00FF6A65 /* CoreLocation.framework */,
 				4F91C0F11A0D2D5E00FF6A65 /* SpaHunterChallenge2 */,
 				4F91C10B1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests */,
 				4F91C0F01A0D2D5E00FF6A65 /* Products */,
@@ -83,12 +94,13 @@
 			children = (
 				4F91C0F61A0D2D5E00FF6A65 /* AppDelegate.h */,
 				4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */,
-				4F91C0F91A0D2D5E00FF6A65 /* ViewController.h */,
-				4F91C0FA1A0D2D5E00FF6A65 /* ViewController.m */,
+				4F91C0F91A0D2D5E00FF6A65 /* RootViewController.h */,
+				4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */,
 				4F91C0FC1A0D2D5E00FF6A65 /* Main.storyboard */,
 				4F91C0FF1A0D2D5E00FF6A65 /* Images.xcassets */,
 				4F91C1011A0D2D5E00FF6A65 /* LaunchScreen.xib */,
 				4F91C0F21A0D2D5E00FF6A65 /* Supporting Files */,
+				4F91C11F1A0D2FD100FF6A65 /* MODEL */,
 			);
 			path = SpaHunterChallenge2;
 			sourceTree = "<group>";
@@ -117,6 +129,15 @@
 				4F91C10D1A0D2D5E00FF6A65 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F91C11F1A0D2FD100FF6A65 /* MODEL */ = {
+			isa = PBXGroup;
+			children = (
+				4F91C11C1A0D2FCB00FF6A65 /* PizzaMapItem.h */,
+				4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */,
+			);
+			name = MODEL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F91C0FB1A0D2D5E00FF6A65 /* ViewController.m in Sources */,
+				4F91C11E1A0D2FCB00FF6A65 /* PizzaMapItem.m in Sources */,
+				4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */,
 				4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */,
 				4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */,
 			);
