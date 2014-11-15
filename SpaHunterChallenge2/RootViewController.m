@@ -9,11 +9,15 @@
 #import "RootViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "Spa.h"
+#define kLatitudeDelta 1.0
+#define kLongitudeDelta 1.0
 
 @interface RootViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property CLLocationManager *manager;
-@property NSArray *pizzaMapItemArray;
+@property (strong, nonatomic) NSMutableArray *spaArray;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation RootViewController
@@ -24,12 +28,18 @@
     self.manager = [[CLLocationManager alloc]init];
     [self.manager requestWhenInUseAuthorization];
     self.manager.delegate = self;
+    [self.manager startUpdatingLocation];
+}
+
+-(void)setSpaArray:(NSMutableArray *)spaArray
+{
+    _spaArray = spaArray;
+    [self.tableView reloadData];
 }
 
 //display an alert if there is an error
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-
     if (error)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"NETWORK ERROR"
@@ -55,39 +65,53 @@
         {
             NSLog (@"Location found...");
             [self.manager stopUpdatingLocation];
+            [self findSpaNear:self.manager.location];
             break;
         }
     }
 }
 
-//TODO: CHANGE THIS TO FINDSPANEAR
-//- (void)findJailNear:(CLLocation *)location
-//{
-//    MKLocalSearchRequest *request = [MKLocalSearchRequest new];
-//    request.naturalLanguageQuery = @"prison";
-//    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1,1));
-//
-//    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-//    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
-//     {
-//         NSArray *mapItems = response.mapItems;
-//         MKMapItem *mapItem = mapItems.firstObject;
-//
-//         self.textView.text = [NSString stringWithFormat:@"You should go to %@", mapItem.name];
-//         [self getDirectionsTo:mapItem];
-//     }];
-//}
+- (void)findSpaNear:(CLLocation *)location
+{
+    self.spaArray = [@[]mutableCopy];
+   [Spa searchForSpaNearMe:location withLatitudeDelta:kLatitudeDelta andLongitudeDelta:kLongitudeDelta andCompletion:^(NSArray *spaObjectsArray, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"error %@", error.localizedDescription);
+        }
+        else
+        {
+            if (spaObjectsArray.count > 4)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    self.spaArray[i] = spaObjectsArray[i];
+                }
+                [self.tableView reloadData];
+            }
+            else
+            {
+                self.spaArray = [@[spaObjectsArray]mutableCopy];
+            }
+        }
+    }];
+}
 
 #pragma mark Table View Methods
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    Spa *spa = self.spaArray[indexPath.row];
+    cell.textLabel.text = spa.mapItem.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", spa.distanceFromMeInKM];
+    return cell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.pizzaMapItemArray.count;
+    return self.spaArray.count;
 }
 
 @end

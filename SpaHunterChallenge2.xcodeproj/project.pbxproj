@@ -16,7 +16,7 @@
 		4F91C10F1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C10E1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m */; };
 		4F91C1191A0D2E2F00FF6A65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1181A0D2E2F00FF6A65 /* CoreLocation.framework */; };
 		4F91C11B1A0D2E7600FF6A65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C11A1A0D2E7600FF6A65 /* MapKit.framework */; };
-		4F91C11E1A0D2FCB00FF6A65 /* PizzaMapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */; };
+		4F99A3BC1A16B8A400430DFF /* Spa.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A3BB1A16B8A400430DFF /* Spa.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,8 @@
 		4F91C10E1A0D2D5E00FF6A65 /* SpaHunterChallenge2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpaHunterChallenge2Tests.m; sourceTree = "<group>"; };
 		4F91C1181A0D2E2F00FF6A65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4F91C11A1A0D2E7600FF6A65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4F91C11C1A0D2FCB00FF6A65 /* PizzaMapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PizzaMapItem.h; sourceTree = "<group>"; };
-		4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PizzaMapItem.m; sourceTree = "<group>"; };
+		4F99A3BA1A16B8A400430DFF /* Spa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spa.h; sourceTree = "<group>"; };
+		4F99A3BB1A16B8A400430DFF /* Spa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spa.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +134,8 @@
 		4F91C11F1A0D2FD100FF6A65 /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
-				4F91C11C1A0D2FCB00FF6A65 /* PizzaMapItem.h */,
-				4F91C11D1A0D2FCB00FF6A65 /* PizzaMapItem.m */,
+				4F99A3BA1A16B8A400430DFF /* Spa.h */,
+				4F99A3BB1A16B8A400430DFF /* Spa.m */,
 			);
 			name = MODEL;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F91C11E1A0D2FCB00FF6A65 /* PizzaMapItem.m in Sources */,
+				4F99A3BC1A16B8A400430DFF /* Spa.m in Sources */,
 				4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */,
 				4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */,
 				4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */,
@@ -434,6 +434,7 @@
 				4F91C1141A0D2D5E00FF6A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F91C1151A0D2D5E00FF6A65 /* Build configuration list for PBXNativeTarget "SpaHunterChallenge2Tests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +443,7 @@
 				4F91C1171A0D2D5E00FF6A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
