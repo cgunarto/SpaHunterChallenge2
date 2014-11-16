@@ -18,6 +18,7 @@
 @interface RootViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate>
 @property CLLocationManager *manager;
 @property (strong, nonatomic) NSMutableArray *spaArray;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property double totalWalkingTime;
@@ -34,6 +35,7 @@
     [self.manager requestWhenInUseAuthorization];
     self.manager.delegate = self;
     self.tabBarController.delegate = self;
+    self.segmentedControl.enabled = NO;
 }
 
 -(void)setSpaArray:(NSMutableArray *)spaArray
@@ -79,12 +81,36 @@
 - (IBAction)onFindBlissButtonPressed:(UIButton *)sender
 {
     [self.manager startUpdatingLocation];
+    self.segmentedControl.enabled = YES;
+
 }
 
 - (IBAction)onCalcButtonPressed:(UIButton *)sender
 {
-    [self countWalkingTimePlusEatingTime:self.spaArray];
+    [self countWalkingTimePlusEatingTime:self.spaArray andTransportType:MKDirectionsTransportTypeWalking];
 }
+
+- (IBAction)onSegmentedControlPressed:(UISegmentedControl *)sender
+{
+    NSInteger selectedIndex = self.segmentedControl.selectedSegmentIndex;
+
+    switch(selectedIndex)
+    {
+        case 0:
+        {
+            [self countWalkingTimePlusEatingTime:self.spaArray andTransportType:MKDirectionsTransportTypeWalking];
+            break;
+        }
+        case 1:
+        {
+            [self countWalkingTimePlusEatingTime:self.spaArray andTransportType:MKDirectionsTransportTypeAutomobile];
+            break;
+        }
+        default : break; //Do nothing
+    }
+
+}
+
 
 - (void)findSpaNear:(CLLocation *)location
 {
@@ -102,7 +128,7 @@
     }];
 }
 
-- (void)countWalkingTimePlusEatingTime: (NSMutableArray *)spaArray
+- (void)countWalkingTimePlusEatingTime: (NSMutableArray *)spaArray andTransportType:(MKDirectionsTransportType)transportType
 {
     self.totalWalkingTime = 0;
     
@@ -117,7 +143,7 @@
 
     //Get directiontime
     MKDirectionsRequest *request = [MKDirectionsRequest new];
-    request.transportType = MKDirectionsTransportTypeWalking;
+    request.transportType = transportType;
 
     for (int i = 0; i < mapItemsForDistanceArray.count -1; i++)
     {

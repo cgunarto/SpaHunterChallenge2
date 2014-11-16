@@ -57,7 +57,6 @@
     }
 }
 
-
 - (void)setInitialViewToSelfLocation
 {
     CLLocationCoordinate2D center = self.manager.location.coordinate;
