@@ -10,6 +10,7 @@
 		4F83158A1A183D6900A283B1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8315891A183D6900A283B1 /* MapViewController.m */; };
 		4F83158D1A184B8100A283B1 /* DirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F83158C1A184B8100A283B1 /* DirectionViewController.m */; };
 		4F8315901A19431600A283B1 /* SpaPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F83158F1A19431600A283B1 /* SpaPointAnnotation.m */; };
+		4F8315931A19676B00A283B1 /* SpaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8315921A19676B00A283B1 /* SpaTableViewCell.m */; };
 		4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F41A0D2D5E00FF6A65 /* main.m */; };
 		4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */; };
 		4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */; };
@@ -39,6 +40,8 @@
 		4F83158C1A184B8100A283B1 /* DirectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionViewController.m; sourceTree = "<group>"; };
 		4F83158E1A19431600A283B1 /* SpaPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaPointAnnotation.h; sourceTree = "<group>"; };
 		4F83158F1A19431600A283B1 /* SpaPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaPointAnnotation.m; sourceTree = "<group>"; };
+		4F8315911A19676B00A283B1 /* SpaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaTableViewCell.h; sourceTree = "<group>"; };
+		4F8315921A19676B00A283B1 /* SpaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaTableViewCell.m; sourceTree = "<group>"; };
 		4F91C0EF1A0D2D5E00FF6A65 /* SpaHunterChallenge2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaHunterChallenge2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F91C0F31A0D2D5E00FF6A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F91C0F41A0D2D5E00FF6A65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				4F99A3BB1A16B8A400430DFF /* Spa.m */,
 				4F83158E1A19431600A283B1 /* SpaPointAnnotation.h */,
 				4F83158F1A19431600A283B1 /* SpaPointAnnotation.m */,
+				4F8315911A19676B00A283B1 /* SpaTableViewCell.h */,
+				4F8315921A19676B00A283B1 /* SpaTableViewCell.m */,
 			);
 			name = MODEL;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */,
 				4F83158A1A183D6900A283B1 /* MapViewController.m in Sources */,
 				4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */,
+				4F8315931A19676B00A283B1 /* SpaTableViewCell.m in Sources */,
 				4F8315901A19431600A283B1 /* SpaPointAnnotation.m in Sources */,
 				4F83158D1A184B8100A283B1 /* DirectionViewController.m in Sources */,
 				4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */,

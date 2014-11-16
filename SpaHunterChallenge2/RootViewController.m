@@ -44,6 +44,7 @@
     [self.tableView reloadData];
 }
 
+#pragma mark Location Managers
 //display an alert if there is an error
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -78,16 +79,13 @@
     }
 }
 
+#pragma mark Button Presses
+
 - (IBAction)onFindBlissButtonPressed:(UIButton *)sender
 {
     [self.manager startUpdatingLocation];
     self.segmentedControl.enabled = YES;
 
-}
-
-- (IBAction)onCalcButtonPressed:(UIButton *)sender
-{
-    [self countWalkingTimePlusEatingTime:self.spaArray andTransportType:MKDirectionsTransportTypeWalking];
 }
 
 - (IBAction)onSegmentedControlPressed:(UISegmentedControl *)sender
@@ -111,6 +109,7 @@
 
 }
 
+#pragma mark Helper Methods
 
 - (void)findSpaNear:(CLLocation *)location
 {
