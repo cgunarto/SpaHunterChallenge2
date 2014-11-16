@@ -155,7 +155,8 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    MapViewController *mapVC = (MapViewController *)viewController;
+    UINavigationController *navController = (UINavigationController *)viewController;
+    MapViewController *mapVC = navController.childViewControllers[0];
     mapVC.spaArray = self.spaArray;
     mapVC.selfLocation = self.manager.location;
 }

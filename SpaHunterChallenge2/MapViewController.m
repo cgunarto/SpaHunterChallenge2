@@ -10,6 +10,8 @@
 @import MapKit;
 @import CoreLocation;
 #import "Spa.h"
+#import "SpaPointAnnotation.h"
+#import "DirectionViewController.h"
 
 #define kLatitudeDelta 0.1
 #define kLongitudeDelta 0.1
@@ -76,21 +78,8 @@
 
     for (Spa *spa in self.spaArray)
     {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
-        annotation.coordinate = spa.mapItem.placemark.location.coordinate;
-        annotation.title = spa.mapItem.placemark.name;
-        [self.mapView addAnnotation:annotation];
-    }
-}
-
-- (void)addAnnotationForSpa
-{
-    for (Spa *spa in self.spaArray)
-    {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
-        annotation.coordinate = spa.mapItem.placemark.location.coordinate;
-        annotation.title = spa.mapItem.placemark.name;
-        [self.mapView addAnnotation:annotation];
+        SpaPointAnnotation *spaAnnotation = [[SpaPointAnnotation alloc]initWithSpa:spa];
+        [self.mapView addAnnotation: spaAnnotation];
     }
 }
 
@@ -99,16 +88,58 @@
     //MKPinAnnotationView instead of MKAnnotation -- be careful
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:nil];
     pin.canShowCallout = YES;
-    pin.rightCalloutAccessoryView =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.pinColor = MKPinAnnotationColorRed;
 
     if (![annotation isEqual:self.selfAnnotation])
     {
         pin.image = [UIImage imageNamed:@"greenmark"];
+        pin.rightCalloutAccessoryView =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
-
     return pin;
 }
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    SpaPointAnnotation *chosenSpaAnnotation = view.annotation;
+    [self performSegueWithIdentifier:@"segueToDirection" sender:(SpaPointAnnotation*)chosenSpaAnnotation];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(SpaPointAnnotation *)chosenSpaAnnotation
+{
+    DirectionViewController *directionVC = segue.destinationViewController;
+    directionVC.chosenSpaAnnotation = chosenSpaAnnotation;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
