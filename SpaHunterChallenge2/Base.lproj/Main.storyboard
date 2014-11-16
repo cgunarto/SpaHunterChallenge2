@@ -221,11 +221,11 @@
             </objects>
             <point key="canvasLocation" x="674" y="410"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Map-->
         <scene sceneID="s65-qs-UAm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dIE-mH-mB8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="noF-Ow-AqM"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="greenmark" id="noF-Ow-AqM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y39-rG-jGS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -241,6 +241,9 @@
             <point key="canvasLocation" x="1213" y="1126"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="greenmark" width="25" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

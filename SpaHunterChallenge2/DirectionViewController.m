@@ -17,6 +17,7 @@
 @interface DirectionViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property CLLocationManager *manager;
+@property MKPointAnnotation *selfAnnotation;
 
 @end
 
@@ -41,6 +42,7 @@
             NSLog (@"Location found...");
             [self.manager stopUpdatingLocation];
             [self setInitialViewToSelfLocation];
+            [self addAnnotationWithSelfAndSpaArray];
             [self showDirection];
             break;
         }
@@ -49,7 +51,16 @@
 
 - (void)setInitialViewToSelfLocation
 {
-    CLLocationCoordinate2D center = self.manager.location.coordinate;
+    CLLocationDegrees selfLatitude = self.manager.location.coordinate.latitude;
+    CLLocationDegrees spaLatitude = self.chosenSpaAnnotation.mapItem.placemark.location.coordinate.latitude;
+    CLLocationDegrees centerLatitude = (selfLatitude + spaLatitude)/2;
+
+    CLLocationDegrees selfLongitude = self.manager.location.coordinate.longitude;
+    CLLocationDegrees spaLongitude = self.chosenSpaAnnotation.mapItem.placemark.location.coordinate.longitude;
+    CLLocationDegrees centerLongitude = (selfLongitude + spaLongitude)/2;
+
+
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(centerLatitude, centerLongitude);
     MKCoordinateSpan coordinateSpan;
     coordinateSpan.latitudeDelta = kLatitudeDelta;
     coordinateSpan.longitudeDelta = kLongitudeDelta;
@@ -57,6 +68,32 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(center, coordinateSpan);
     [self.mapView setRegion:region animated:YES];
 }
+
+- (void)addAnnotationWithSelfAndSpaArray
+{
+    self.selfAnnotation = [[MKPointAnnotation alloc]init];
+    self.selfAnnotation.coordinate = self.manager.location.coordinate;
+    self.selfAnnotation.title = @"Your location";
+    [self.mapView addAnnotation:self.selfAnnotation];
+
+    [self.mapView addAnnotation: self.chosenSpaAnnotation];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    //MKPinAnnotationView instead of MKAnnotation -- be careful
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:nil];
+    pin.canShowCallout = YES;
+    pin.pinColor = MKPinAnnotationColorRed;
+
+    if (![annotation isEqual:self.selfAnnotation])
+    {
+        pin.image = [UIImage imageNamed:@"greenmark"];
+        pin.rightCalloutAccessoryView =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    }
+    return pin;
+}
+
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
