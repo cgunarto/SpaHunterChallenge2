@@ -177,9 +177,26 @@
                     <view key="view" contentMode="scaleToFill" id="c9T-Hx-Gu8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-MC-WjD">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TTp-X5-IvG" id="Rdr-yj-dYC"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pva-JZ-Hor" firstAttribute="top" secondItem="SZu-MC-WjD" secondAttribute="bottom" id="Ftv-ex-Lcy"/>
+                            <constraint firstItem="SZu-MC-WjD" firstAttribute="leading" secondItem="c9T-Hx-Gu8" secondAttribute="leadingMargin" constant="-16" id="Fva-lf-iDu"/>
+                            <constraint firstItem="SZu-MC-WjD" firstAttribute="top" secondItem="eT3-Bm-SMa" secondAttribute="bottom" id="GVf-iH-bKY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SZu-MC-WjD" secondAttribute="trailing" constant="-16" id="jFA-kj-GgK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0un-3L-StZ"/>
+                    <connections>
+                        <outlet property="mapView" destination="SZu-MC-WjD" id="XXD-nl-1bh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vty-6Y-faL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
