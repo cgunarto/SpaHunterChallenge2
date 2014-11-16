@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F83158A1A183D6900A283B1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8315891A183D6900A283B1 /* MapViewController.m */; };
 		4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F41A0D2D5E00FF6A65 /* main.m */; };
 		4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */; };
 		4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F8315881A183D6900A283B1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		4F8315891A183D6900A283B1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		4F91C0EF1A0D2D5E00FF6A65 /* SpaHunterChallenge2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaHunterChallenge2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F91C0F31A0D2D5E00FF6A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F91C0F41A0D2D5E00FF6A65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				4F91C0F71A0D2D5E00FF6A65 /* AppDelegate.m */,
 				4F91C0F91A0D2D5E00FF6A65 /* RootViewController.h */,
 				4F91C0FA1A0D2D5E00FF6A65 /* RootViewController.m */,
+				4F8315881A183D6900A283B1 /* MapViewController.h */,
+				4F8315891A183D6900A283B1 /* MapViewController.m */,
 				4F91C0FC1A0D2D5E00FF6A65 /* Main.storyboard */,
 				4F91C0FF1A0D2D5E00FF6A65 /* Images.xcassets */,
 				4F91C1011A0D2D5E00FF6A65 /* LaunchScreen.xib */,
@@ -242,6 +247,7 @@
 			files = (
 				4F99A3BC1A16B8A400430DFF /* Spa.m in Sources */,
 				4F91C0FB1A0D2D5E00FF6A65 /* RootViewController.m in Sources */,
+				4F83158A1A183D6900A283B1 /* MapViewController.m in Sources */,
 				4F91C0F81A0D2D5E00FF6A65 /* AppDelegate.m in Sources */,
 				4F91C0F51A0D2D5E00FF6A65 /* main.m in Sources */,
 			);

@@ -10,14 +10,19 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "Spa.h"
+#import "MapViewController.h"
+
 #define kLatitudeDelta 1.0
 #define kLongitudeDelta 1.0
 
-@interface RootViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface RootViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate>
 @property CLLocationManager *manager;
 @property (strong, nonatomic) NSMutableArray *spaArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property double totalWalkingTime;
+@property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
+
 @end
 
 @implementation RootViewController
@@ -28,7 +33,7 @@
     self.manager = [[CLLocationManager alloc]init];
     [self.manager requestWhenInUseAuthorization];
     self.manager.delegate = self;
-    [self.manager startUpdatingLocation];
+    self.tabBarController.delegate = self;
 }
 
 -(void)setSpaArray:(NSMutableArray *)spaArray
@@ -71,10 +76,20 @@
     }
 }
 
+- (IBAction)onFindBlissButtonPressed:(UIButton *)sender
+{
+    [self.manager startUpdatingLocation];
+}
+
+- (IBAction)onCalcButtonPressed:(UIButton *)sender
+{
+    [self countWalkingTimePlusEatingTime:self.spaArray];
+}
+
 - (void)findSpaNear:(CLLocation *)location
 {
     self.spaArray = [@[]mutableCopy];
-   [Spa searchForSpaNearMe:location withLatitudeDelta:kLatitudeDelta andLongitudeDelta:kLongitudeDelta andCompletion:^(NSArray *spaObjectsArray, NSError *error)
+   [Spa searchForSpaNearMe:location withLatitudeDelta:kLatitudeDelta andLongitudeDelta:kLongitudeDelta andCompletion:^(NSMutableArray *fourSpaObjectsArray, NSError *error)
     {
         if (error)
         {
@@ -82,20 +97,43 @@
         }
         else
         {
-            if (spaObjectsArray.count > 4)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    self.spaArray[i] = spaObjectsArray[i];
-                }
-                [self.tableView reloadData];
-            }
-            else
-            {
-                self.spaArray = [@[spaObjectsArray]mutableCopy];
-            }
+            self.spaArray = fourSpaObjectsArray;
         }
     }];
+}
+
+- (void)countWalkingTimePlusEatingTime: (NSMutableArray *)spaArray
+{
+    self.totalWalkingTime = 0;
+    
+    NSMutableArray *mapItemsForDistanceArray = [@[]mutableCopy];
+    [mapItemsForDistanceArray insertObject:[MKMapItem mapItemForCurrentLocation] atIndex:0];
+
+    for (Spa *spa in self.spaArray)
+    {
+        [mapItemsForDistanceArray addObject:spa.mapItem];
+    }
+    [mapItemsForDistanceArray addObject:[MKMapItem mapItemForCurrentLocation]];
+
+    //Get directiontime
+    MKDirectionsRequest *request = [MKDirectionsRequest new];
+    request.transportType = MKDirectionsTransportTypeWalking;
+
+    for (int i = 0; i < mapItemsForDistanceArray.count -1; i++)
+    {
+        request.source = mapItemsForDistanceArray[i];
+        request.destination = mapItemsForDistanceArray[i+1];
+
+        MKDirections *directions = [[MKDirections alloc]initWithRequest:request];
+
+        [directions calculateETAWithCompletionHandler:^(MKETAResponse *response, NSError *error)
+        {
+            NSTimeInterval estimatedTravelTimeInSeconds = response.expectedTravelTime;
+            self.totalWalkingTime = self.totalWalkingTime + estimatedTravelTimeInSeconds/ (double)60 + 50;
+            self.minutesLabel.text = [NSString stringWithFormat:@"%.2f",self.totalWalkingTime];
+        }];
+    }
+
 }
 
 #pragma mark Table View Methods
@@ -105,7 +143,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     Spa *spa = self.spaArray[indexPath.row];
     cell.textLabel.text = spa.mapItem.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", spa.distanceFromMeInKM];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", spa.distanceFromMeInKM];
+    cell.imageView.image = [UIImage imageNamed:@"greenmark"];
     return cell;
 }
 
@@ -113,5 +152,13 @@
 {
     return self.spaArray.count;
 }
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    MapViewController *mapVC = (MapViewController *)viewController;
+    mapVC.spaArray = self.spaArray;
+    mapVC.selfLocation = self.manager.location;
+}
+
 
 @end

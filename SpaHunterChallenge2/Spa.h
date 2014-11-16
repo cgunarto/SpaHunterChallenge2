@@ -15,7 +15,7 @@
 
 + (NSArray *)spasFromArray:(NSArray *)mapItems;
 
-+ (void)searchForSpaNearMe: (CLLocation *)location withLatitudeDelta: (float)latDelta andLongitudeDelta: (float)longDelta andCompletion:(void(^)(NSArray *spaObjectsArray, NSError *error))complete;
++ (void)searchForSpaNearMe: (CLLocation *)location withLatitudeDelta: (float)latDelta andLongitudeDelta: (float)longDelta andCompletion:(void(^)(NSMutableArray *fourSpaObjectsArray, NSError *error))complete;
 
 + (NSArray *)addDistanceInKmFromUserLocation: (CLLocation *)myLocation andSpaObjectsArray: (NSArray *)spaObjectsArray;
 

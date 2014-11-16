@@ -23,7 +23,7 @@
     return spaArray;
 }
 
-+ (void)searchForSpaNearMe: (CLLocation *)location withLatitudeDelta: (float)latDelta andLongitudeDelta: (float)longDelta andCompletion:(void(^)(NSArray *spaObjectsArray, NSError *error))complete
++ (void)searchForSpaNearMe: (CLLocation *)location withLatitudeDelta: (float)latDelta andLongitudeDelta: (float)longDelta andCompletion:(void(^)(NSMutableArray *fourSpaObjectsArray, NSError *error))complete
 {
     MKLocalSearchRequest *request = [MKLocalSearchRequest new];
     request.naturalLanguageQuery = @"Spa";
@@ -58,7 +58,15 @@
                  }
              }];
 
-             complete (spaObjectsWithDistArray, nil);
+             NSMutableArray *fourSpaObjectsArray = [@[]mutableCopy];
+             if (spaObjectsWithDistArray.count > 4)
+             {
+                 for (int i =0; i<4 ; i++)
+                 {
+                     fourSpaObjectsArray[i] = spaObjectsWithDistArray[i];
+                 }
+             }
+            complete (fourSpaObjectsArray, nil);
          }
      }];
 }
